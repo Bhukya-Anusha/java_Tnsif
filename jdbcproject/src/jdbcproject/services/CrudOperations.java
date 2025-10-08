@@ -26,4 +26,29 @@ public class CrudOperations {
 		}
 		return n;
 	}
+	
+	 public static int updatestudent(int sid, String newName) {
+	        int n = 0;
+	        try {
+	            pst = con.prepareStatement("UPDATE student SET sname = ? WHERE sid = ?");
+	            pst.setString(1, newName);
+	            pst.setInt(2, sid);
+	            n = pst.executeUpdate();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return n;
+	    }
+	    
+	    public static int deletestudent(int sid) {
+	        int n = 0;
+	        try {
+	            pst = con.prepareStatement("DELETE FROM student WHERE sid = ?");
+	            pst.setInt(1, sid);
+	            n = pst.executeUpdate();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return n;
+	    }
 }
